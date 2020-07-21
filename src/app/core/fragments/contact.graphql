@@ -1,0 +1,6 @@
+fragment ContactFlat on Contact {
+    id
+    name
+    email
+    phone
+}

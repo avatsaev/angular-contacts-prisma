@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import {GetAllContactsGQL} from './core/models/generated/graphql';
+import {map, pluck} from 'rxjs/operators';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +8,14 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'angular-contacts-prisma';
+
+  contacts$ = this.getAllContactsGQL.watch().valueChanges.pipe(
+      pluck('data', 'contacts')
+  )
+
+
+  constructor(private getAllContactsGQL: GetAllContactsGQL) {
+
+  }
+
 }

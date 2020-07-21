@@ -1,0 +1,5 @@
+query getAllContacts {
+    contacts {
+        ...ContactFlat
+    }
+}
